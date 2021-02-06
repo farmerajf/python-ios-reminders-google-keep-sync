@@ -34,7 +34,7 @@ class handler(http.server.SimpleHTTPRequestHandler):
         note = keep.get("1b3CkvjF0IZ2VnIXTIsaKVzOfg2e1JUo7Qsrbc3ivVXae5ikmxOpIO12rsS2XpA")
         for item in note.items:
             if item.checked == checked:
-                self.wfile.write(bytes(item.text + "\n", "utf8"))
+                self.wfile.write(bytes(item.text + ",", "utf8"))
 
         return
 
