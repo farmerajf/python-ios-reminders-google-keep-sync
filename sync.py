@@ -7,6 +7,11 @@ class handler(http.server.SimpleHTTPRequestHandler):
     def do_GET(self):
         print("Recieved GET")
 
+        checked = False
+        if self.path=="/checked":
+            checked = True
+        
+
         # Sending an '200 OK' response
         self.send_response(200)
 
@@ -28,7 +33,8 @@ class handler(http.server.SimpleHTTPRequestHandler):
 
         note = keep.get("1b3CkvjF0IZ2VnIXTIsaKVzOfg2e1JUo7Qsrbc3ivVXae5ikmxOpIO12rsS2XpA")
         for item in note.items:
-            self.wfile.write(bytes(item.text + "\n", "utf8"))
+            if item.checked == checked:
+                self.wfile.write(bytes(item.text + "\n", "utf8"))
 
         return
 
