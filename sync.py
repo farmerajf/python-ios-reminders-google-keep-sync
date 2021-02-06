@@ -40,7 +40,7 @@ class handler(http.server.SimpleHTTPRequestHandler):
                     unchecked += ","
                 unchecked += item.text
                 
-        self.wfile.write(bytes(unchecked + "|" + checked, "utf8"))
+        self.wfile.write(bytes(unchecked + "|" + checked + "|", "utf8"))
 
         return
 
