@@ -35,6 +35,7 @@ class handler(http.server.SimpleHTTPRequestHandler):
 handler_object = handler
 
 PORT = 8000
+print("Starting HTTP server")
 my_server = socketserver.TCPServer(("", PORT), handler_object)
 my_server.serve_forever()
 
