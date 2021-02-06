@@ -5,6 +5,8 @@ import os
 
 class handler(http.server.SimpleHTTPRequestHandler):
     def do_GET(self):
+        print("Recieved GET")
+
         # Sending an '200 OK' response
         self.send_response(200)
 
@@ -14,8 +16,10 @@ class handler(http.server.SimpleHTTPRequestHandler):
         # Whenever using 'send_header', you also have to call 'end_headers'
         self.end_headers()
 
+        print("Calling Google API")
         keep = gkeepapi.Keep()
         success = keep.login(os.getenv("sync_username"), os.getenv("sync_password"))
+        print(success)
 
         #note = keep.createNote('Todo', 'Eat breakfast')
         #note.pinned = True
